@@ -18,6 +18,7 @@ int main()
     cout << "(t) Tangent\n";
     cout << "(e) Natural Log\n";
     cout << "(l) Common Log\n";
+    cout << "(h) Hypotenuse\n";
     cout << "Please enter a number: ";
     long double num1;
     int exitLoop = 0; //exit loop when 1 (on) and loop when 0 (off)
