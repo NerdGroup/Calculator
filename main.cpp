@@ -1,5 +1,6 @@
 #include<iostream>
 #include<math.h>
+#include<vector>
 
 using namespace std;
 double Calculator(long double answer);
@@ -19,6 +20,7 @@ int main()
     cout << "(e) Natural Log\n";
     cout << "(l) Common Log\n";
     cout << "(h) Hypotenuse\n";
+	cout << "(p) Prime\n";
     cout << "Please enter a number: ";
     long double num1;
     int exitLoop = 0; //exit loop when 1 (on) and loop when 0 (off)
@@ -60,6 +62,37 @@ double Calculator (long double num1)
     {
         answer = log10(num1);
     }
+	else if(func = 'p')
+	{
+		cout << "Converting from decimal values to integer if there is a decimal point...\n";
+		int num1Converted = num1;
+		vector <int> divisors;
+		divisors.push_back(1);
+		divisors.push_back(num1Converted);
+		const int squareRoot = sqrt(num1);
+		bool prime = true;
+		for(unsigned int i = 2; i <= squareRoot; i++)
+		{
+			if(num1Converted % i == 0)
+			{
+				prime = false;
+				divisors.push_back(i);
+				if(i != num1Converted/i)
+					divisors.push_back(num1Converted/i);
+			}
+		}
+		if(prime == false)
+		{
+			cout << "The number is not prime.\n";
+			cout << "Divisors: ";
+			for(unsigned int i = 0; i < divisors.size(); i++)
+				cout << divisors[i] << " ";
+			cout << endl;
+		}
+		else
+			cout << "The number is prime.\n";
+		
+	}
     else
     {
         cout << "Please enter another number: ";
@@ -98,8 +131,9 @@ double Calculator (long double num1)
         
     }
     
-    
-    cout << "The answer to all your worries is " << answer << endl;
-    
+    if(func != 'p')
+		cout << "The answer to all your worries is " << answer << endl;
+	else
+		answer = num1;
     return answer;
 }
