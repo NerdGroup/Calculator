@@ -21,6 +21,7 @@ int main()
     cout << "(l) Common Log\n";
     cout << "(h) Hypotenuse\n";
 	cout << "(p) Prime\n";
+	cout << "(g) Greatest Common Divisor\n";
     cout << "Please enter a number: ";
     long double num1;
     int exitLoop = 0; //exit loop when 1 (on) and loop when 0 (off)
@@ -62,7 +63,7 @@ double Calculator (long double num1)
     {
         answer = log10(num1);
     }
-	else if(func = 'p')
+	else if(func == 'p')
 	{
 		cout << "Converting from decimal values to integer if there is a decimal point...\n";
 		int num1Converted = num1;
@@ -127,6 +128,44 @@ double Calculator (long double num1)
             {
                 answer = hypot(num1, num2);
             }
+			case 'g':
+			{
+				//Euclidean Algorithm:
+				bool exit = false;
+				int num1Converted, num2Converted;
+				if(num1 > num2)
+				{
+					num1Converted = num1;
+					num2Converted = num2;
+				}
+				else
+				{
+					num1Converted = num2;
+					num2Converted = num1;
+				}
+				while(exit == false)
+				{
+					if(num1Converted == 0)
+					{
+						answer = num2;
+						exit = true;
+					}
+					else if(num2Converted == 0)
+					{
+						answer = num1;
+						exit = true;
+					}
+					else
+					{
+						int numm;
+						numm = num2Converted;
+						num2Converted = num1Converted % num2Converted;
+						num1Converted = numm;
+					}
+				}
+
+				answer = num1Converted;
+			}
         }
         
     }
